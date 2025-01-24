@@ -1,7 +1,10 @@
 # intelligent-tutor-system
 
 
-![Django Logo](https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg)
+!<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Django_logo.svg" alt="Django Logo" />
+</p>
+
 
 **intelligent-tutor-system** es un sistema de tutor inteligente basado en la materia de programación. Este sistema utiliza Python, Django, y tecnologías avanzadas como redes neuronales para ofrecer una experiencia personalizada de aprendizaje. 
 
@@ -140,10 +143,5 @@
 
 ---
 
-## Licencia
-
-Este proyecto está licenciado bajo los términos de la [MIT License](LICENSE).
-
----
 
 ### ¡Gracias por usar intelligent-tutor-system!
