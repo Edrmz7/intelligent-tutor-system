@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Fijo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between bg-white/10 backdrop-blur-md p-4 shadow-md w-full max-w-7xl mx-auto rounded-full mt-4">
+        <!-- Sección de Logo -->
+        <div class="flex items-center gap-2">
+            <!-- Imagen del logo -->
+            <img class="w-6 h-6" src="src/inicio/logo.png" alt="Logo">
+            <!-- Nombre de la empresa -->
+            <span class="text-xl font-semibold text-white">ITS</span>
+        </div>
+
+        <!-- Sección de Links de navegación -->
+        <div class="flex items-center gap-6">
+            <!-- Link 1: Inicio -->
+            <a href="#inicio" class="text-white">Inicio</a>
+            <!-- Link 2: Recursos -->
+            <a href="#recursos" class="text-white">Recursos</a>
+            <!-- Link 3: Tutor -->
+            <a href="#tutor" class="text-white">Tutor</a>
+        </div>
+
+        <!-- Sección de Perfil de Usuario -->
+        <div class="flex items-center gap-3">
+            <!-- Nombre del usuario -->
+            <span class="text-sm text-white">Angel Ivan Cabrera</span>
+            <!-- Imagen del perfil -->
+            <img class="w-10 h-10 rounded-full" src="src/inicio/profile.png" alt="Profile Picture">
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <!-- Ajustado el espacio entre el navbar y el contenido principal -->
+    <div class="mt-32 flex flex-col items-center justify-center text-center px-6">
+        <!-- Hero Heading -->
+        <h1 class="text-4xl text-white mb-6">
+            Aprender lógica es el primer paso hacia el pensamiento crítico
+        </h1>
+
+        <!-- Subtítulo o Llamado a la Acción -->
+        <p class="text-xl text-gray-300 mb-10">
+            ¡Comienza tu camino al aprendizaje ahora!
+        </p>
+
+        <!-- Botón para el Examen Inicial -->
+        <div class="flex">
+            <a href="#examen" class="px-6 py-3 bg-white/10 text-white font-medium rounded-full shadow-md hover:bg-white/30 transition">
+                Examen Inicial
+            </a>
+        </div>
+    </div>
+
+    <div class=" mt-20 relative w-full max-w-4xl h-[350px] overflow-hidden rounded-[65.486px] shadow-md mx-auto">
+        <!-- Carrusel Items -->
+        <div class="flex transition-transform duration-500 ease-in-out" id="carousel">
+            <div class="w-full flex-shrink-0 h-[388px] bg-cover bg-center" style="background-image: url('src/inicio/carrusel/wall1.jpg');"></div>
+            <div class="w-full flex-shrink-0 h-[388px] bg-cover bg-center" style="background-image: url('src/inicio/carrusel/wall2.jpg');"></div>
+            <div class="w-full flex-shrink-0 h-[388px] bg-cover bg-center" style="background-image: url('src/inicio/carrusel/wall3.png');"></div>
+        </div>
+    </div>
+
+    
+    
+    <script>
+        // JavaScript para funcionalidad automática del carrusel
+        const carousel = document.getElementById('carousel');
+        let index = 0;
+    
+        const moveCarousel = () => {
+            const items = carousel.children.length; // Número de imágenes
+            const itemWidth = carousel.parentElement.offsetWidth; // Ancho del contenedor
+            index = (index + 1) % items; // Incrementa el índice de forma cíclica
+            carousel.style.transform = `translateX(-${index * itemWidth}px)`; // Cambia el desplazamiento en función del índice
+        };
+    
+        // Cambiar imagen cada 2 segundos
+        setInterval(moveCarousel, 2000);
+    </script>
+    
+</body>
+</html>
