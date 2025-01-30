@@ -8,59 +8,40 @@
     <link rel="stylesheet" href="css/stylos.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black">
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between bg-white/10 backdrop-blur-md p-4 shadow-md w-full max-w-7xl mx-auto rounded-full mt-4">
-        <!-- Sección de Logo -->
+    <nav class="fixed top-0 left-0 right-0 flex items-center justify-between bg-white/10 backdrop-blur-md p-2 shadow-md w-full max-w-7xl mx-auto rounded-full mt-4 z-50">
         <div class="flex items-center gap-2">
-            <!-- Imagen del logo -->
             <img class="w-6 h-6" src="src/inicio/logo.png" alt="Logo">
-            <!-- Nombre de la empresa -->
             <span class="text-xl font-semibold text-white">ITS</span>
         </div>
-
-        <!-- Sección de Links de navegación -->
         <div class="flex items-center gap-6">
-            <!-- Link 1: Inicio -->
             <a href="#inicio" class="text-white">Inicio</a>
-            <!-- Link 2: Recursos -->
             <a href="#recursos" class="text-white">Recursos</a>
-            <!-- Link 3: Tutor -->
             <a href="#tutor" class="text-white">Tutor</a>
         </div>
-
-        <!-- Sección de Perfil de Usuario -->
         <div class="flex items-center gap-3">
-            <!-- Nombre del usuario -->
             <span class="text-sm text-white">Angel Ivan Cabrera</span>
-            <!-- Imagen del perfil -->
-            <img class="w-10 h-10 rounded-full" src="src/inicio/profile.png" alt="Profile Picture">
+            <img class="w-8 h-8 rounded-full" src="src/inicio/profile.png" alt="Profile Picture">
         </div>
     </nav>
 
     <!-- Contenido Principal -->
-    <!-- Ajustado el espacio entre el navbar y el contenido principal -->
-    <div class="mt-32 flex flex-col items-center justify-center text-center px-6">
-        <!-- Hero Heading -->
-        <h1 class="text-4xl text-white mb-6">
+    <div class="mt-32 flex flex-col items-center justify-center text-center px-6 ">
+        <h1 class="text-5xl text-white mb-6 w-full max-w-4xl">
             Aprender lógica es el primer paso hacia el pensamiento crítico
         </h1>
-
-        <!-- Subtítulo o Llamado a la Acción -->
         <p class="text-xl text-gray-300 mb-10">
             ¡Comienza tu camino al aprendizaje ahora!
         </p>
-
-        <!-- Botón para el Examen Inicial -->
-        <div class="flex">
+        <div>
             <a href="#examen" class="px-6 py-3 bg-white/10 text-white font-medium rounded-full shadow-md hover:bg-white/30 transition">
                 Examen Inicial
             </a>
         </div>
     </div>
 
-    <div class=" mt-20 relative w-full max-w-4xl h-[350px] overflow-hidden rounded-[65.486px] shadow-md mx-auto">
-        <!-- Carrusel Items -->
+    <div class="flying-box mt-20 relative w-full max-w-4xl h-[350px] overflow-hidden rounded-[65.486px] shadow-md mx-auto">
         <div class="flex transition-transform duration-500 ease-in-out" id="carousel">
             <div class="w-full flex-shrink-0 h-[388px] bg-cover bg-center" style="background-image: url('src/inicio/carrusel/wall1.jpg');"></div>
             <div class="w-full flex-shrink-0 h-[388px] bg-cover bg-center" style="background-image: url('src/inicio/carrusel/wall2.jpg');"></div>
@@ -68,23 +49,132 @@
         </div>
     </div>
 
+    <div class="mt-20 w-full max-w-4xl px-6 py-4 bg-transparent rounded-2xl flex justify-between items-center mx-auto">
+        <div class="text-center">
+            <div class="text-white text-5xl font-normal">70%</div>
+            <div class="text-white text-2xl font-normal">Autodidactas</div>
+        </div>
+        <div class="text-center">
+            <div class="text-white text-5xl font-normal">26.9M</div>
+            <div class="text-white text-2xl font-normal">Desarrolladores globales</div>
+        </div>
+        <div class="text-center">
+            <div class="text-white text-5xl font-normal">94%</div>
+            <div class="text-white text-2xl font-normal">Código abierto</div>
+        </div>
+    </div>
+
+    <div class="mt-20 w-full max-w-4xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-10 backdrop-blur-md p-8 rounded-2xl shadow-md">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-4xl text-white font-normal text-center">
+                    ¿Por qué aprender programación?
+                </h2>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 text-justify">
+                    "El aprendizaje de la programación y la lógica no es solo para crear aplicaciones, sino para desarrollar habilidades esenciales: pensamiento crítico, solución de problemas y creatividad. En un mundo cada vez más digital, entender la lógica detrás de los sistemas te da una ventaja. ¡Anímate a explorar este mundo lleno de oportunidades!"
+                </p>
+            </div>
+            <div class="w-full h-full md:w-1/2">
+                <img class="w-full h-full object-cover rounded-2xl shadow-lg" src="src/inicio/programador.jpeg" alt="Motivación para programar" />
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-10 w-full max-w-4xl mx-auto px-6">
+        <h2 class="text-center text-white text-5xl font-normal mb-10">
+            Creadores que Inspiran: El Poder del Código y la Comunidad
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Creador 1 -->
+            <div class=" rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                <img class="w-24 h-24 rounded-full mb-4" src="src/inicio/creadores/midudev.png" alt="midudev">
+                <h3 class="text-white text-2xl font-medium underline mb-2">midudev</h3>
+                <p class="text-center text-white text-lg font-normal">
+                    "La programación es una herramienta para cambiar el mundo, pero también para cambiar tu mundo."
+                </p>
+            </div>
     
+            <!-- Creador 2 -->
+            <div class=" rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                <img class="w-24 h-24 rounded-full mb-4" src="src/inicio/creadores/MoureDev.png" alt="MoureDev">
+                <h3 class="text-white text-2xl font-medium underline mb-2">MoureDev</h3>
+                <p class="text-center text-white text-lg font-normal">
+                    "Aprender a programar es como aprender un nuevo idioma; requiere práctica y paciencia."
+                </p>
+            </div>
     
+            <!-- Creador 3 -->
+            <div class=" rounded-2xl p-6 shadow-lg flex flex-col items-center">
+                <img class="w-24 h-24 rounded-full mb-4" src="src/inicio/creadores/5ro4.png" alt="5ro4">
+                <h3 class="text-white text-2xl font-medium underline mb-2">5ro4</h3>
+                <p class="text-center text-white text-lg font-normal">
+                    "Cada error en el código es una oportunidad para aprender y mejorar."
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    
+<footer class=" text-white py-6 mt-20 ">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Contenedor general -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Sección 1: Información -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">ITS - Intelligent Tutor System</h3>
+                <p class="text-sm text-gray-300">
+                    Un sistema para aprender programación con soporte personalizado y recursos educativos diseñados para mejorar tu experiencia de aprendizaje.
+                </p>
+            </div>
+
+            <!-- Sección 2: Enlaces útiles -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Enlaces útiles</h3>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                    <li><a href="#recursos" class="hover:text-white transition">Recursos</a></li>
+                    <li><a href="#tutor" class="hover:text-white transition">Tutor</a></li>
+                    <li><a href="#examen" class="hover:text-white transition">Examen Inicial</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección 3: Redes sociales -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-6 h-6">
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Twitter" class="w-6 h-6">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- Derechos reservados -->
+        <div class="mt-8 text-center text-sm text-gray-400 border-t border-gray-600 pt-4">
+            © 2025 ITS. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>
+
     <script>
-        // JavaScript para funcionalidad automática del carrusel
         const carousel = document.getElementById('carousel');
         let index = 0;
-    
         const moveCarousel = () => {
-            const items = carousel.children.length; // Número de imágenes
-            const itemWidth = carousel.parentElement.offsetWidth; // Ancho del contenedor
-            index = (index + 1) % items; // Incrementa el índice de forma cíclica
-            carousel.style.transform = `translateX(-${index * itemWidth}px)`; // Cambia el desplazamiento en función del índice
+            const items = carousel.children.length;
+            const itemWidth = carousel.parentElement.offsetWidth;
+            index = (index + 1) % items;
+            carousel.style.transform = `translateX(-${index * itemWidth}px)`;
         };
-    
-        // Cambiar imagen cada 2 segundos
         setInterval(moveCarousel, 2000);
     </script>
-    
 </body>
 </html>
