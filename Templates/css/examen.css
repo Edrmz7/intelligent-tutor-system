@@ -1,0 +1,274 @@
+.examen-incial {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 79px;
+  padding: 10px 82px;
+  position: relative;
+  background-color: #252627;
+  width: 100%;
+}
+
+.examen-incial .question-frame {
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  max-width: 80%;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 31px 95px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  background-color: #252627;
+  border-radius: 44px;
+  box-shadow: inset 0px 4px 4px #00000040, 0px 4px 4px #00000040;
+}
+
+.examen-incial .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.examen-incial .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.examen-incial .buttons {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.examen-incial .arrow {
+  margin-left: -1.50px;
+  position: relative;
+  width: 26.5px;
+  height: 22.09px;
+}
+
+.examen-incial .text-wrapper {
+  position: relative;
+  width: fit-content;
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.examen-incial .close {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.examen-incial .line {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  object-fit: cover;
+}
+
+.examen-incial .selection-question {
+  display: flex;
+  flex-direction: column;
+  height: 353px;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.examen-incial .div {
+  display: flex;
+  flex-direction: column;
+  width: 685px;
+  align-items: flex-start;
+  gap: 25px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.examen-incial .title {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.examen-incial .text-wrapper-2 {
+  position: relative;
+  flex: 1;
+  margin-top: -1.00px;
+  font-family: "IBM Plex Sans-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.examen-incial .answers {
+  display: flex;
+  flex-direction: column;
+  height: 162px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0px 13px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+
+}
+
+.examen-incial .radio {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  margin-left: -2.00px;
+  background-color: #252627;
+  border-radius: 60px;
+  border: 2px solid;
+  border-color: #d9d9d9;
+  box-shadow: inset 0px 4px 4px #00000040;
+}
+
+.examen-incial .radio-2 {
+  position: relative;
+  width: 21px;
+  height: 21px;
+  margin-left: -4.00px;
+  background-color: #7a44d7;
+  border-radius: 60px;
+  border: 2px solid;
+}
+
+
+.examen-incial .text-wrapper-3 {
+  position: relative;
+  width: 608px;
+  height: 33px;
+  margin-top: -1.00px;
+  font-family: "IBM Plex Sans-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+.examen-incial .bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.examen-incial .line-2 {
+  position: relative;
+  width: 924px;
+  height: 1px;
+  margin-top: -1.00px;
+  object-fit: cover;
+}
+
+.examen-incial .buttons-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.examen-incial .omitir {
+  display: flex;
+  width: 158px;
+  height: 68px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  margin-top: -4.00px;
+  margin-bottom: -4.00px;
+  margin-left: -4.00px;
+  background-color: #252627;
+  border-radius: 16px;
+  border-style: solid;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-color: #9f9f9f;
+}
+
+.examen-incial .text-wrapper-4 {
+  position: relative;
+  flex: 1;
+  font-family: "IBM Plex Sans-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.examen-incial .enviar {
+  display: flex;
+  width: 156px;
+  height: 66px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  margin-top: -3.00px;
+  margin-bottom: -3.00px;
+  margin-right: -3.00px;
+  background-color: #7a44d7;
+  border-radius: 16px;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+  backdrop-filter: blur(4px) brightness(100%);
+  -webkit-backdrop-filter: blur(4px) brightness(100%);
+}

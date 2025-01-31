@@ -1,64 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pregunta 3 de 10</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/stylos.css">
-</head>
-<body class="bg-white/10 flex justify-center items-center min-h-screen p-4">
-       <!-- Header -->
-       <div class="flex items-left mb-6 mr-10 ">
-        <h1 class="text-xl text-white font-medium font">Pregunta 3 de 10</h1>
-       </div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/examen.css" />
+    <link rel="stylesheet" href="css/exm_glob.css" />
+  </head>
+  <body>
+    <div class="examen-incial">
+      <div class="question-frame">
+        <div class="content">
+          <div class="top">
+            <div class="buttons">
+              <img class="arrow" src="svg/arrow.svg" />
+              <div class="text-wrapper">Pregunta 3 de 10</div>
+              <img class="close" src="svg/close.svg" />
+            </div>
+            <img class="line" src="svg/line-1.svg" />
+          </div>
+          <div class="selection-question">
+            <div class="div">
+              <div class="title"><div class="text-wrapper-2">PREGUNTA PRUEBA 3</div></div>
+              <div class="answers">
 
-  <main class="w-full max-w-md p-4 bg-white/10 rounded-3xl shadow-lg">
-    <!-- Question Section -->
-    <section class="bg-white/10 p-6 rounded-3xl shadow-inner">
-      <div class="text-center text-2xl text-gray-300 font-bold font-[\'IBM Plex Sans\'] mb-4">
-        PREGUNTA PRUEBA 3
+                <div class="ANS">
+                  <input class="radio" type="radio" id="ans-1" value="1">
+                  <label class="text-wrapper-3" for="ans-1">Respuesta Prueba 1</label>
+                </div>
+
+                <div class="ANS">
+                  <input class="radio" type="radio" id="ans-2" value="2">
+                  <label class="text-wrapper-3" for="ans-2">Respuesta Prueba 2</label>
+                </div>
+
+                <div class="ANS">
+                  <input class="radio" type="radio" id="ans-3" value="3">
+                  <label class="text-wrapper-3" for="ans-3">Respuesta Prueba 3</label>
+                </div>
+
+                <div class="ANS">
+                  <input class="radio" type="radio" id="ans-4" value="4">
+                  <label class="text-wrapper-3" for="ans-4">Respuesta Prueba 4</label>
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+          <div class="bottom">
+            <img class="line" src="svg/line-1.svg" />
+            <div class="buttons-2">
+              <div class="omitir"><div class="text-wrapper-4">Omitir</div></div>
+              <div class="enviar"><div class="text-wrapper-4">Siguiente</div></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Divider -->
-      <hr class="border-gray-600 my-4">
-
-      <!-- Answers Section -->
-      <div class="space-y-4">
-        <label class="flex items-center space-x-4">
-          <input type="radio" name="respuesta" class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-          <span class="text-white text-lg font-normal font-[\'IBM Plex Sans\']">Respuesta Prueba 1</span>
-        </label>
-
-        <label class="flex items-center space-x-4">
-          <input type="radio" name="respuesta" class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-          <span class="text-white text-lg font-normal font-[\'IBM Plex Sans\']">Respuesta Prueba 2</span>
-        </label>
-
-        <label class="flex items-center space-x-4">
-          <input type="radio" name="respuesta" class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-          <span class="text-white text-lg font-normal font-[\'IBM Plex Sans\']">Respuesta Prueba 3</span>
-        </label>
-
-        <label class="flex items-center space-x-4">
-          <input type="radio" name="respuesta" class="w-4 h-4 text-blue-500 focus:ring-blue-500">
-          <span class="text-white text-lg font-normal font-[\'IBM Plex Sans\']">Respuesta Prueba 4</span>
-        </label>
-      </div>
-
-      <!-- Divider -->
-      <hr class="border-gray-600 my-4">
-
-      <!-- Action Buttons -->
-      <div class="flex justify-between mt-4">
-        <button class="w-32 h-12 bg-gray-600 hover:bg-gray-700 text-white font-bold text-lg rounded-2xl border-b-4 border-gray-500">
-          Omitir
-        </button>
-        <button class="w-32 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-2xl border-b-2 border-black">
-          Siguiente
-        </button>
-      </div>
-    </section>
-  </main>
-</body>
+    </div>
+  </body>
 </html>
