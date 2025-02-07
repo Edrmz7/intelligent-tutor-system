@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat IA</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Highlight.js para resaltar código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <!-- Marked.js para renderizar Markdown -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+</head>
+<body class="bg-black text-white flex items-center justify-center h-screen p-4 mt-20" style="background-image: url('{% static "src/login/Background.png" %}');">
+
+    {% include 'navbar.html' %}
+
+    <div class="w-full flex flex-col max-w-4xl mx-auto">
+        <h1 id="help-title" class="text-3xl font-bold text-center p-4">¿En qué puedo ayudarte?</h1>
+        
+        <div id="messages" class="flex flex-col p-4 space-y-3 overflow-y-auto bg-transparent rounded-xl min-h-[200px] max-h-[70vh]"></div>
+        
+        <div class="relative mt-4 bg-white/10 p-2 rounded-xl">
+            <textarea id="user-input" rows="1" class="w-full resize-none p-10 pr-12 bg-transparent text-white rounded-xl select-none focus:outline-none focus:ring-0" placeholder="Escribe tu mensaje..." oninput="adjustInputHeight()" onkeydown="handleKeyDown(event)"></textarea>
+            <button onclick="sendMessage()" class="absolute bottom-4 right-5 px-4 py-2 bg-white/10 hover:bg-gray-500 text-white font-medium rounded-full transition focus:outline-none focus:ring-0">→</button>
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let userInput = document.getElementById("user-input");
+            let message = userInput.value.trim();
+            if (!message) return;
+
+            let messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML += `<div class='bg-white/30 p-3 rounded-xl self-end text-white max-w-md shadow-lg break-words'>${message}</div>`;
+            userInput.value = "";
+            adjustInputHeight();
+            adjustMessagesHeight();
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // Ocultar el título de ayuda una vez que el usuario envía el mensaje
+            document.getElementById("help-title").style.display = "none";
+
+            try {
+                let response = await fetch("/api-chat/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ messages: [{ role: "user", content: message }] })
+                });
+                if (!response.ok) throw new Error("Error en la respuesta");
+                let data = await response.json();
+                displayMessage(data.response);
+            } catch (error) {
+                console.error("Error:", error);
+                displayMessage("⚠️ No se pudo obtener respuesta.");
+            }
+        }
+
+        function displayMessage(response) {
+            let messagesDiv = document.getElementById("messages");
+            let formattedResponse = marked.parse(response);
+            let messageHTML = `
+                <div class='bg-white/10 p-3 rounded-xl self-start text-white max-w-md shadow-lg break-words'>
+                    <div class='markdown-body'>${formattedResponse}</div>
+                </div>`;
+            messagesDiv.innerHTML += messageHTML;
+            adjustMessagesHeight();
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            document.querySelectorAll("pre code").forEach((block) => hljs.highlightElement(block));
+        }
+
+        function adjustInputHeight() {
+            let input = document.getElementById("user-input");
+            input.style.height = "auto";
+            input.style.height = input.scrollHeight + "px";
+        }
+
+        function adjustMessagesHeight() {
+            let messagesDiv = document.getElementById("messages");
+            messagesDiv.style.height = "auto";
+            messagesDiv.style.maxHeight = "70vh";
+        }
+
+        function handleKeyDown(event) {
+            // Detectar la tecla Enter sin Shift y enviar el mensaje
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();  // Evitar que se agregue una nueva línea
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
