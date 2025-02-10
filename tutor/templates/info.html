@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Información del Usuario</title>
+  {% load static %}
+</head>
+<body class="h-screen w-screen bg-lightgray bg-cover bg-center bg-no-repeat overflow-hidden" style="background-image: url('{% static "src/login/Background.png" %}');">
+  <div class="flex h-full items-center justify-center">
+    <div class="bg-white/10 p-8 rounded-lg shadow-md w-full max-w-md text-white">
+      <h1 class="text-4xl font-semibold mb-4 text-center">Perfil del Usuario</h1>
+      <div class="flex flex-col items-center space-y-4">
+        <!-- Imagen de perfil -->
+        <div class="w-24 h-24 rounded-full bg-gray-500 flex justify-center items-center">
+          <img src="src/login/user.png" alt="Usuario" class="w-20 h-20 rounded-full">
+        </div>
+        <!-- Información del usuario -->
+        <div class="text-center">
+          <h2 class="text-2xl font-semibold">{{ user.full_name }}</h2>
+          <p class="text-gray-300 text-sm">{{ user.email }}</p>
+        </div>
+        <div class="w-full space-y-2">
+          <p class="bg-white/10 p-3 rounded-lg text-sm">Nivel: {{ user.level }}</p>
+          <p class="bg-white/10 p-3 rounded-lg text-sm">Calificación del examen: {{ examen.score }}</p>
+          <p class="bg-white/10 p-3 rounded-lg text-sm">Última actividad: {{ examen.date|default:'No disponible' }}</p>
+        </div>
+      </div>
+      <div class="mt-6">
+        <button class="block w-full h-12 bg-white/50 text-white rounded-full text-sm font-semibold hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          Editar Perfil
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

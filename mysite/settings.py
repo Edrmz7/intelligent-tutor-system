@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h300u2v6xjo(9bfe+2htity+j=b!=)^m81kc-%df4+s#nur050'
+SECRET_KEY = 'django-insecure-2uhd9rz$stxacu*l+^@s%5e&eb(lg869q^xz-6mm%za)bn^wgo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
     'rest_framework',
+    'tutor',	
 ]
 
 MIDDLEWARE = [
@@ -51,11 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
-
 ROOT_URLCONF = 'mysite.urls'
+AUTH_USER_MODEL = 'tutor.User'
 
 TEMPLATES = [
     {
@@ -81,8 +78,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Ensure 'mysql' is correctly spelled
+        'NAME': 'its',
+        'USER': 'eduardormz',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',  # or your DB host
+        'PORT': '3306',  # Default MySQL port
     }
 }
 
@@ -129,4 +130,3 @@ LOGOUT_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

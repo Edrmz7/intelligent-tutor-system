@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex items-center justify-center h-screen bg-[#252627] text-white">
+    <div class="w-full max-w-3xl p-8 bg-[#252627] rounded-[44px] shadow-xl shadow-black/25 border border-black">
+      <div class="flex justify-between items-center mb-4">
+        <img class="w-6 h-6 cursor-pointer" src="{% static 'svg/arrow.svg' %}" alt="Flecha" id="prev-btn" />
+        <div class="text-lg font-medium" id="question-counter"></div>
+        <img class="w-6 h-6 cursor-pointer" src="{% static 'svg/close.svg' %}" alt="Cerrar" />
+      </div>
+      <hr class="border-gray-600 mb-4" />
+      <div class="mb-4 text-center">
+        <div class="text-xl font-bold" id="question-text"></div>
+      </div>
+      <div class="space-y-4" id="answers-container">
+        <textarea id="answer-input" class="w-full p-2 bg-gray-700 rounded-lg text-white" placeholder="Escribe tu respuesta aquí..."></textarea>
+      </div>
+      <hr class="border-gray-600 mt-4 mb-4" />
+      <div class="flex justify-between">
+        <button id="skip-btn" class="px-6 py-3 border border-gray-400 rounded-lg text-white hover:bg-gray-700">Omitir</button>
+        <button id="next-btn" class="px-6 py-3 bg-[#7a44d7] rounded-lg text-white hover:bg-purple-700 border-b-4 border-black shadow-md">Siguiente</button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const questions = [
+          { question: "¿Qué es un algoritmo y por qué es importante en la programación?" },
+          { question: "¿Cuál es la diferencia entre un lenguaje compilado e interpretado?" },
+          { question: "Explica qué es un diagrama de flujo y su utilidad en la programación." },
+          { question: "¿Qué son las estructuras de control y cuáles son las más comunes?" },
+          { question: "¿Cómo funciona una estructura condicional (if-else) en un lenguaje de programación?" },
+          { question: "¿Qué es un bucle y qué tipos de bucles existen en la programación?" },
+          { question: "Explica el concepto de variable y su importancia en un programa." },
+          { question: "¿Qué es la lógica booleana y cómo se aplica en programación?" },
+          { question: "¿Cómo se utilizan los operadores lógicos (AND, OR, NOT) en estructuras de control en programación?" },
+          { question: "¿Qué es la recursividad y en qué casos se utiliza?" },
+          { question: "¿Cuál es la diferencia entre un operador lógico y un operador aritmético en programación?" }
+        ];
+
+        let currentQuestion = 0;
+        const totalQuestions = questions.length;
+        const questionCounter = document.getElementById("question-counter");
+        const questionText = document.getElementById("question-text");
+        const answerInput = document.getElementById("answer-input");
+        const userAnswers = [];
+
+        const updateQuestion = () => {
+          if (questions.length === 0 || currentQuestion >= totalQuestions || currentQuestion < 0) {
+            console.error("Error en la actualización de la pregunta.");
+            return;
+          }
+          
+          console.log("Mostrando pregunta:", currentQuestion, questions[currentQuestion].question);
+          
+          questionCounter.textContent = `Pregunta ${currentQuestion + 1} de ${totalQuestions}`;
+          questionText.textContent = questions[currentQuestion].question;
+          answerInput.value = userAnswers[currentQuestion]?.answer || "";
+        };
+
+        const saveAnswers = async () => {
+          const messages = userAnswers.map((item) => ({
+            role: "user",
+            content: `Pregunta: ${item.question}\nRespuesta: ${item.answer || "Respuesta vacía"}\n\nEvalúa esta respuesta y devuelve únicamente un número entre 0.0 y 10.0 como calificación. No agregues explicaciones ni comentarios.`
+          }));
+          
+          try {
+            console.log("Enviando respuestas a la IA:", messages);
+            const response = await fetch('/api-chat/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ messages })
+            });
+            
+            const data = await response.json();
+            console.log("Respuesta de la IA:", data);
+            
+            if (data.response) {
+              const score = parseFloat(data.response);
+              if (!isNaN(score)) {
+                const level = calculateLevel(score);
+                await updateUserExam(score, level);
+              } else {
+                console.error("La IA no devolvió un puntaje válido.");
+              }
+            }
+          } catch (error) {
+            console.error("Error al obtener la calificación:", error);
+          }
+        };
+
+        const calculateLevel = (score) => {
+          if (score < 7) return 'no competente';
+          if (score < 7.5) return 'básico umbral';
+          if (score < 8.5) return 'básico avanzado';
+          if (score < 9.5) return 'independiente';
+          return 'competente';
+        };
+
+        const updateUserExam = async (score, level) => {
+          try {
+            const response = await fetch('/update-user-exam/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ score, level })
+            });
+            const data = await response.json();
+            console.log("Actualización del examen:", data);
+          } catch (error) {
+            console.error("Error al actualizar el examen:", error);
+          }
+        };
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+          userAnswers[currentQuestion] = { question: questions[currentQuestion].question, answer: answerInput.value };
+          if (currentQuestion < totalQuestions - 1) {
+            currentQuestion++;
+            updateQuestion();
+          } else {
+            saveAnswers();
+          }
+        });
+
+        document.getElementById("prev-btn").addEventListener("click", () => {
+          if (currentQuestion > 0) {
+            currentQuestion--;
+            updateQuestion();
+          }
+        });
+
+        updateQuestion();
+      });
+    </script>
+  </body>
+</html>
